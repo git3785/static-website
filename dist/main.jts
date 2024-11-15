@@ -1,0 +1,52 @@
+// scripts/main.ts
+// Dynamically populate the Skills section
+var skills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Node.js"];
+// scripts/main.ts
+// Array of skills with proficiency percentage (out of 100)
+var skills = [
+    { name: "HTML", proficiency: 90 },
+    { name: "CSS", proficiency: 85 },
+    { name: "JavaScript", proficiency: 80 },
+    { name: "TypeScript", proficiency: 75 },
+    { name: "React", proficiency: 70 },
+    { name: "Node.js", proficiency: 60 },
+];
+// Function to display skills as a list
+function displaySkillsList() {
+    var skillsList = document.getElementById("skillsList");
+    skillsList.innerHTML = skills
+        .map(function (skill) { return "<li>".concat(skill.name, "</li>"); })
+        .join("");
+}
+// Function to display skills as proficiency bars
+function displaySkillsBars() {
+    var skillsBars = document.getElementById("skillsBars");
+    skillsBars.innerHTML = skills
+        .map(function (skill) { return "\n          <div class=\"skill-bar\">\n            <div class=\"skill-name\">".concat(skill.name, "</div>\n            <div class=\"skill-bar-container\">\n              <div class=\"skill-bar-inner\" style=\"width: ").concat(skill.proficiency, "%;\"></div>\n            </div>\n            <div class=\"skill-percent\">").concat(skill.proficiency, "%</div>\n          </div>"); })
+        .join("");
+}
+// Initialize the Skills section
+displaySkillsList();
+displaySkillsBars();
+function displaySkills() {
+    var skillsList = document.getElementById("skillsList");
+    skillsList.innerHTML = skills.map(function (skill) { return "<li>".concat(skill, "</li>"); }).join("");
+}
+// Handle form submission
+var contactForm = document.getElementById("contactForm");
+contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    alert("Thank you, ".concat(name, "! We will get in touch with you at ").concat(email, "."));
+});
+// Handle Contact Me button click
+var contactBtn = document.getElementById("contactBtn");
+if (contactBtn) {
+    contactBtn.addEventListener("click", function () {
+        var _a;
+        (_a = document.getElementById("contact")) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: "smooth" });
+    });
+}
+// Initialize page features
+displaySkills();
